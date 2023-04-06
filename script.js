@@ -37,7 +37,14 @@ function getData(){
             overview.textContent = `${movies.overview}`;
 
             //append the child element to the parent element
-            
+            document.body.appendChild(main);
+            main.appendChild(divMovies);
+            divMovies.appendChild(image);
+            divMovies.appendChild(divMoviesInformation);
+            divMoviesInformation.appendChild(title);
+            divMoviesInformation.appendChild(rate);
+            divMovies.appendChild(overview);
+
 
             
         });
