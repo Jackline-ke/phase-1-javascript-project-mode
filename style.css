@@ -37,34 +37,7 @@ form{
     outline: 0;
     background-color: #ffffff;
 }
-.slide{
-    padding-top: 20px;  
-    font-size: 22px; 
-}
-.row{
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 50px 0;
-}
-.row-text{
-    color: #ffffff;
-    
-}
-.row-text h2{
-    text-shadow: 0 5px 10px rgba(253, 0, 0, 0.795);
-}
-.row-text p{
-    font-size: 30px;
-}
 
-.row-image img{
-    display: block;
-    width: 90%;
-    margin: auto;
-}
 
 
 #movies_body{
