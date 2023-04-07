@@ -51,10 +51,9 @@ The frontend will be built with HTML, CSS, and JavaScript and will communicate w
 - This is a movie application that displays movies and allows a user to search, comment and like a movie.
 
 ### Image
-#### Header
+
 ![Header screenshot](./images/display.png)
 
-#### Items
 ![Item screenshot](./images/display2.png)
 
 
