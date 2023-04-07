@@ -1,14 +1,6 @@
 
 //TMD API
-const api_key = 'api_key=d0b6a8b70638aff6e9306cec3d0d132a';
-const base_url = 'https://api.themoviedb.org/3';
-const api_url = base_url + '/discover/movie?sort_by=popularity.desc&' + api_key;
-const image_url = 'https://image.tmdb.org/t/p/w500';
-const search_url = base_url + '/search/movies?' + api_key
 
-const form = document.getElementById('form')
-const search = document.getElementById('search')
-const main = document.getElementById('movies_body')
 
 getData(api_url);
 
