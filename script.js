@@ -12,8 +12,10 @@ const main = document.getElementById('movies_body')
 
 getData(api_url);
 
+// featching our data
 function getData(url){
     fetch(url)
+    //converting the string data to object json
     .then(response => response.json())
     .then(data => {
         console.log(data.results);
@@ -24,6 +26,7 @@ function getData(url){
 function showMovies(data){
     main.innerHTML = '';
     
+    //creating our html elements
     data.forEach(movie => {
         const {title, poster_path, overview, vote_average} = movie;
         const movieElement = document.createElement('div')
@@ -85,6 +88,7 @@ function showMovies(data){
 });
 };
 
+//ading color to our ratings
 function getColor(vote){
     if(vote >= 8){
         return 'green'
@@ -94,7 +98,7 @@ function getColor(vote){
         return 'red'
     }
 };
-
+//adding an event listener to the searchBar
 form.addEventListener('submit', (event) => {
     event.preventDefault();
 

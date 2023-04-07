@@ -45,21 +45,21 @@ form{
     display: flex;
     width: 100%;
     align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
     padding: 50px 0;
 }
 .row-text{
     color: #ffffff;
-    flex-basis: 50%;
-    margin-bottom: 20px;
+    
 }
 .row-text h2{
     text-shadow: 0 5px 10px rgba(253, 0, 0, 0.795);
 }
-.row-image{
-    flex-basis: 50%;
-    margin-bottom: 20px;
+.row-text p{
+    font-size: 30px;
 }
+
 .row-image img{
     display: block;
     width: 90%;
