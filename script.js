@@ -89,7 +89,15 @@ function showMovies(data){
 };
 
 //ading color to our ratings
-
+function getColor(vote){
+    if(vote >= 8){
+        return 'green'
+    }else if(vote >= 5){
+        return 'orange'
+    }else{
+        return 'red'
+    }
+};
 //adding an event listener to the searchBar
 form.addEventListener('submit', (event) => {
     event.preventDefault();
