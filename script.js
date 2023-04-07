@@ -1,144 +1,22 @@
-/*
-const main = document.createElement('main')
-main.className = 'movies_body'
-
-
-
-const search_url = 'http://localhost:3000/movies/search/movies?api_key=d0b6a8b70638aff6e9306cec3d0d132a'
-
-
-//fetch our data from the api
-function getData(){
-    fetch('http://localhost:3000/movies')
-    .then(response => response.json())
-    .then(data => {
-
-        data.forEach(movies => {
-            //create ,div,img,h3,p
-
-            const form = document.getElementById('form')
-const search = document.getElementById('search')
-
-            const divMovies = document.createElement('div');
-            divMovies.className = 'movies';
-            const image = document.createElement('img');
-            image.className = 'movie_image';
-            const divMoviesInformation = document.createElement('div');
-            divMoviesInformation.className = 'movies_info';
-            const title = document.createElement('h4');
-            title.className = 'title';
-            const rate = document.createElement('span');
-            rate.className = '${getColor(movies.vote_average)}';
-            const overview = document.createElement('div');
-            overview.className = 'overview';
-            
-            
-
-            //assign values
-            image.src = `${movies.poster_path}`;
-            title.textContent =`${movies.title}`;
-            rate.textContent =`${movies.vote_average}`;
-            
-            overview.textContent = `${movies.overview}`;
-            
-
-            //append the child element to the parent element
-            document.body.appendChild(main);
-            main.appendChild(divMovies);
-            divMovies.appendChild(image);
-            divMovies.appendChild(divMoviesInformation);
-            divMoviesInformation.appendChild(title);
-            divMoviesInformation.appendChild(rate);
-            divMovies.appendChild(overview);
-            
-            form.addEventListener('submit', (event) => {
-                event.preventDefault();
-            
-                const searchTerm = search.value;
-            
-                if(searchTerm){
-                    getData(search_url + '&query=' + searchTerm)
-                }
-            });
-
-        });
-    })
-}
-//call the function
-const fetchData = getData();
-
-//function yo change vote_average changing
-function getColor(vote){
-    if(vote >= 8){
-        return 'green'
-    }else if(vote >= 5){
-        return 'orange'
-    }else{
-        return 'red'
-    }
-}
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //TMD API
 const api_key = 'api_key=d0b6a8b70638aff6e9306cec3d0d132a';
 const base_url = 'https://api.themoviedb.org/3';
 const api_url = base_url + '/discover/movie?sort_by=popularity.desc&' + api_key;
 const image_url = 'https://image.tmdb.org/t/p/w500';
+const search_url = base_url + '/search/movies?' + api_key
 
-const main = document.createElement('main')
-main.className = 'movies_body'
+const form = document.getElementById('form')
+const search = document.getElementById('search')
+const main = document.getElementById('movies_body')
 
 getData(api_url);
 
 function getData(url){
-    
     fetch(url)
     .then(response => response.json())
-    .then(data =>{
-        
-        console.log(data.results)
+    .then(data => {
+        console.log(data.results);
         showMovies(data.results);
     })
 }
@@ -146,8 +24,8 @@ function getData(url){
 function showMovies(data){
     main.innerHTML = '';
     
-    data.forEach(movie =>{
-        const {title, poster_path, overview, vote_average} = movie
+    data.forEach(movie => {
+        const {title, poster_path, overview, vote_average} = movie;
         const movieElement = document.createElement('div')
         movieElement.classList.add('movie');
         movieElement.innerHTML = `
@@ -164,13 +42,49 @@ function showMovies(data){
                ${overview}
            
            </div>
+           <div class="comments">
+
+           <div class="like">
+           <button id="heart-btn"><i class="far fa-heart"></i></button>
+           </div>
+
+           <div class ="comment-section">
+           <h5>Comments</h5>
+           <input type="text" placeholder="Add a comment...">
+           <button class="add-comment-btn">Add</button>
+           <ul class="comment-list"></ul>
+           </div>
+           
+           </div>
 
         `
-        main.appendChild(movieElement);
-        document.body.appendChild(main)
+        main.appendChild(movieElement);        
+    });
+
+    // Add event listeners to heart buttons
+    const heartBtns = document.querySelectorAll('.like button');
+    heartBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.classList.toggle('liked');
+        });
+    });
+
+    const addCommentBtn = movieElement.querySelector('.add-comment-btn');
+    addCommentBtn.addEventListener('click', (event) => {
         
-    })
-}
+    event.preventDefault(); // prevent form submission
+    const commentInput = movieElement.querySelector('input[type="text"]');
+    const commentText = commentInput.value.trim();
+    if (commentText !== '') {
+        const commentElement = document.createElement('li');
+        commentElement.textContent = commentText;
+        commentList.appendChild(commentElement);
+        commentInput.value = '';
+        commentInput.placeholder = "Add a comment...";
+    }
+});
+};
+
 function getColor(vote){
     if(vote >= 8){
         return 'green'
@@ -179,5 +93,21 @@ function getColor(vote){
     }else{
         return 'red'
     }
-}
+};
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const searchTerm = search.value;
+
+    if(searchTerm){
+        getData(search_url + '&query=' +  searchTerm )
+    }
+});
+
+
+
+
+
+
 
