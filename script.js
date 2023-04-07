@@ -33,7 +33,32 @@ function showMovies(data){
         movieElement.classList.add('movie');
         movieElement.innerHTML = `
 
+           <img src ="${image_url+poster_path}" alt = "Movie Image" class= "movies_image">
            
+           <div class = "movies_info">
+               <h4>${title}</h4>
+               <span class ="${getColor(vote_average)}">${vote_average}</span>
+           </div>
+
+           <div class = "overview">
+               <h3>Overview</h3>
+               ${overview}
+           
+           </div>
+           <div class="comments">
+
+           <div class="like">
+           <button id="heart-btn"><i class="far fa-heart"></i></button>
+           </div>
+
+           <div class ="comment-section">
+           <h5>Comments</h5>
+           <input type="text" placeholder="Add a comment...">
+           <button class="add-comment-btn">Add</button>
+           <ul class="comment-list"></ul>
+           </div>
+           
+           </div>
 
         `
         main.appendChild(movieElement);        
