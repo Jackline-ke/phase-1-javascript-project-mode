@@ -98,6 +98,16 @@ function getColor(vote){
         return 'red'
     }
 };
+//adding an event listener to the searchBar
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const searchTerm = search.value;
+
+    if(searchTerm){
+        getData(search_url + '&query=' +  searchTerm )
+    }
+});
 
 
 
